@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantcure - Mission</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Argent+CF:wght@400;700&family=GreyCliff+CF:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#000000',
+                        secondary: '#666666'
+                    },
+                    borderRadius: {
+                        'none': '0px',
+                        'sm': '4px',
+                        DEFAULT: '8px',
+                        'md': '12px',
+                        'lg': '16px',
+                        'xl': '20px',
+                        '2xl': '24px',
+                        '3xl': '32px',
+                        'full': '9999px',
+                        'button': '8px'
+                    },
+                    fontFamily: {
+                        'argent': ['Argent CF', 'serif'],
+                        'greycliff': ['GreyCliff CF', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Base styles for icons and menus */
+        :where([class^="ri-"])::before {
+            content: "\f3c2";
+        }
+
+        .menu-open {
+            transform: translateX(0) !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        .flex.flex-col.items-start.justify-center {
+            transition: all 0.3s ease;
+        }
+
+        #menu {
+            transition: all 0.3s ease;
+            visibility: hidden;
+        }
+
+        #menu.menu-open {
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #menu a {
+            transition: all 0.2s ease;
+        }
+
+        #menu a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        /* Hamburger to X transition */
+        .hamburger-menu {
+            position: relative;
+            width: 32px;
+            height: 24px;
+            cursor: pointer;
+        }
+
+        .hamburger-menu span {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: white;
+            transition: all 0.3s ease;
+            left: 0;
+        }
+
+        .hamburger-menu span:nth-child(1) {
+            top: 0;
+        }
+
+        .hamburger-menu span:nth-child(2) {
+            top: 10px;
+        }
+
+        .hamburger-menu span:nth-child(3) {
+            top: 20px;
+        }
+
+        /* X animation */
+        .hamburger-menu.open span:nth-child(1) {
+            transform: rotate(45deg);
+            top: 10px;
+        }
+
+        .hamburger-menu.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-menu.open span:nth-child(3) {
+            transform: rotate(-45deg);
+            top: 10px;
+        }
+
+        @font-face {
+            font-family: 'Argent CF';
+            src: local('Argent CF');
+        }
+
+        .number-font {
+            font-family: 'Argent CF', serif;
+        }
+
+        /* Card hover effects */
+        .mission-card {
+            transition: all 0.3s ease;
+            transform: translateY(0);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .mission-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #121212;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+
+<body class="bg-primary min-h-screen text-white m-0 p-0">
+    <!-- Navigation -->
+    <nav class="w-full px-6 py-4">
+        <div class="container mx-auto px-4 md:px-6 flex justify-between items-center">
+            <h1 class="font-argent text-3xl md:text-4xl font-bold">Quantcure</h1>
+            <div class="flex items-center">
+                <div id="menuBtn" class="hamburger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div id="menu"
+                class="fixed top-20 right-6 w-48 bg-primary rounded-lg shadow-xl transform opacity-0 transition-all duration-300 ease-in-out z-50">
+                <div class="py-2">
+                    <ul class="font-greycliff text-sm">
+                        <li><a href="index.html"
+                                class="text-white hover:text-gray-300 block py-2 px-4 transition-all duration-200">Home</a>
+                        </li>
+                        <li><a href="goal.html"
+                                class="text-white hover:text-gray-300 block py-2 px-4 transition-all duration-200">Goals</a>
+                        </li>
+                        <li><a href="mission.html"
+                                class="text-white hover:text-gray-300 block py-2 px-4 transition-all duration-200">Mission
+                                & Values</a></li>
+                        <li><a href="roadmap.html"
+                                class="text-white hover:text-gray-300 block py-2 px-4 transition-all duration-200">Roadmap</a>
+                        </li>
+                        <li><a href="products.html"
+                                class="text-white hover:text-gray-300 block py-2 px-4 transition-all duration-200">Products</a>
+                        </li>
+                        <li><a href="blogs.html"
+                                class="text-white hover:text-gray-300 block py-2 px-4 transition-all duration-200">Blogs</a>
+                        </li>
+                        <li><a href="story.html"
+                                class="text-white hover:text-gray-300 block py-2 px-4 transition-all duration-200">Our
+                                Story</a></li>
+                        <li><a href="team.html"
+                                class="text-white hover:text-gray-300 block py-2 px-4 transition-all duration-200">About
+                                Us</a>
+                        </li>
+                        <li><a href="contact.html"
+                                class="text-white hover:text-gray-300 block py-2 px-4 transition-all duration-200">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-8 md:py-16">
+        <div class="container mx-auto px-4 md:px-6">
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-center font-argent mb-4">Mission, Vision & Values
+            </h1>
+            <p class="text-center text-gray-400 max-w-3xl mx-auto">Our guiding principles in revolutionizing drug
+                discovery through computational models and deep tech.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="py-8 md:py-16">
+        <div class="container mx-auto px-4 md:px-6">
+
+            <!-- Card Grid Section -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16">
+                <!-- Mission Card -->
+                <div class="mission-card bg-gray-900 rounded-xl p-6 md:p-8 flex flex-col h-full">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center mr-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                        </div>
+                        <h2 class="text-2xl md:text-3xl font-bold font-argent">Mission</h2>
+                    </div>
+                    <div class="flex-grow">
+                        <p class="text-base md:text-lg leading-relaxed text-gray-300">
+                            In this era of information and heightened computing capability, we are actively building key
+                            scientific
+                            methods which utilize the transformative power of advanced computational models to
+                            accelerate the drug discovery pipeline. We are actively striving to bridge the gap between
+                            deep tech and
+                            pharmaceutical sciences for quicker, better, and safer drugs to market.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Vision Card -->
+                <div class="mission-card bg-gray-900 rounded-xl p-6 md:p-8 flex flex-col h-full">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full bg-purple-600 flex items-center justify-center mr-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                            </svg>
+                        </div>
+                        <h2 class="text-2xl md:text-3xl font-bold font-argent">Vision</h2>
+                    </div>
+                    <div class="flex-grow flex items-center">
+                        <p class="text-base md:text-lg leading-relaxed text-gray-300">
+                            To identify or discover a drug for every disease
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Values Card -->
+                <div
+                    class="mission-card bg-gray-900 rounded-xl p-6 md:p-8 flex flex-col h-full md:col-span-2 lg:col-span-1">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full bg-green-600 flex items-center justify-center mr-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                            </svg>
+                        </div>
+                        <h2 class="text-2xl md:text-3xl font-bold font-argent">Core Values</h2>
+                    </div>
+                    <div class="flex-grow">
+                        <ul class="space-y-4 text-base md:text-lg text-gray-300">
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-6 w-6 text-green-500 mr-2 flex-shrink-0 mt-1" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span><strong class="text-white">Patient Centricity</strong> - Build every part
+                                    responsibly with only focus on patients</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-6 w-6 text-green-500 mr-2 flex-shrink-0 mt-1" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span><strong class="text-white">Integrity</strong> - Upholding ethical standards and
+                                    transparency</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-6 w-6 text-green-500 mr-2 flex-shrink-0 mt-1" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span><strong class="text-white">Innovation</strong> - Being unapologetically
+                                    creative</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visual Section -->
+            <div class="bg-gray-900 rounded-xl p-6 md:p-8 mb-16">
+                <h2 class="text-2xl md:text-3xl font-bold text-center font-argent mb-8">Our Approach</h2>
+                <div class="flex flex-col md:flex-row gap-8 items-center">
+                    <div class="w-full md:w-1/2 lg:w-3/5">
+                        <img src="https://static.readdy.ai/image/5bc27dc9c82ef147db4effa390bd36f6/9dfbfeb9de81508fd856ccf87feb592a.png"
+                            alt="Core Values Diagram" class="w-full h-auto rounded-lg shadow-lg" />
+                    </div>
+                    <div class="w-full md:w-1/2 lg:w-2/5 space-y-6">
+                        <div class="bg-gray-800 rounded-lg p-4 md:p-6">
+                            <h3 class="text-xl font-bold mb-2 font-argent">Research Focus</h3>
+                            <p class="text-gray-300">Leveraging computational models and artificial intelligence to
+                                accelerate drug discovery.</p>
+                        </div>
+                        <div class="bg-gray-800 rounded-lg p-4 md:p-6">
+                            <h3 class="text-xl font-bold mb-2 font-argent">Technology Integration</h3>
+                            <p class="text-gray-300">Seamlessly blending deep tech with pharmaceutical sciences for
+                                innovative solutions.</p>
+                        </div>
+                        <div class="bg-gray-800 rounded-lg p-4 md:p-6">
+                            <h3 class="text-xl font-bold mb-2 font-argent">Patient Impact</h3>
+                            <p class="text-gray-300">Ensuring all our efforts ultimately lead to improving patient
+                                outcomes and quality of life.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quote Section -->
+            <div class="bg-gradient-to-r from-blue-900 to-purple-900 rounded-xl p-8 md:p-12 text-center mb-16">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white opacity-50 mx-auto mb-6" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+                </svg>
+                <blockquote class="text-xl md:text-2xl lg:text-3xl font-argent mb-6">
+                    "Our mission is to transform drug discovery through technology, making healthcare more accessible
+                    and effective for everyone."
+                </blockquote>
+                <p class="text-lg text-gray-300">— Quantcure Leadership</p>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="text-center">
+                <h2 class="text-2xl md:text-3xl font-bold font-argent mb-6">Join Our Mission</h2>
+                <p class="text-lg mb-8 max-w-3xl mx-auto">Interested in our approach? Learn more about our innovative
+                    solutions and how we're working to discover drugs for every disease.</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="contact.html"
+                        class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+                        Contact Us
+                    </a>
+                    <a href="products.html"
+                        class="bg-transparent border-2 border-blue-600 hover:bg-blue-600 hover:bg-opacity-10 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+                        Our Products
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12">
+        <div class="container mx-auto px-6">
+            <div class="border-t border-gray-800 pt-8 flex flex-col items-center text-center">
+                <p class="font-greycliff text-gray-400 mb-6">© 2025 Quantcure, All Rights Reserved.</p>
+                <div class="flex space-x-4 mb-6">
+                    <div class="bg-gray-800 rounded-full w-60 h-10 flex items-center justify-center">
+                        <span class="text-gray-300">Quantcure</span>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 mb-4">Innovative Quantitative Solutions</p>
+                <div class="flex flex-wrap justify-center space-x-6 text-xs text-gray-500">
+                    <span>Privacy Policy</span>
+                    <span>Terms of Service</span>
+                    <span>Contact Us</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Toggle menu functionality with hamburger to X animation
+        const menuBtn = document.getElementById('menuBtn');
+        const menu = document.getElementById('menu');
+
+        menuBtn.addEventListener('click', function () {
+            menu.classList.toggle('menu-open');
+            menuBtn.classList.toggle('open');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function (event) {
+            if (!menuBtn.contains(event.target) && !menu.contains(event.target)) {
+                menu.classList.remove('menu-open');
+                menuBtn.classList.remove('open');
+            }
+        });
+
+        // Add scroll animation for cards
+        document.addEventListener('DOMContentLoaded', function () {
+            const cards = document.querySelectorAll('.mission-card');
+
+        });
+
+    </script>
+</body>
+
+</html>

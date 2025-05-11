@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantcure - About Us</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Argent+CF:wght@400;700&family=GreyCliff+CF:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#000000',
+                        secondary: '#666666'
+                    },
+                    borderRadius: {
+                        'none': '0px',
+                        'sm': '4px',
+                        DEFAULT: '8px',
+                        'md': '12px',
+                        'lg': '16px',
+                        'xl': '20px',
+                        '2xl': '24px',
+                        '3xl': '32px',
+                        'full': '9999px',
+                        'button': '8px'
+                    },
+                    fontFamily: {
+                        'argent': ['Argent CF', 'serif'],
+                        'greycliff': ['GreyCliff CF', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Base styles for icons and menus */
+        :where([class^="ri-"])::before {
+            content: "\f3c2";
+        }
+
+        .menu-open {
+            transform: translateX(0) !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        .flex.flex-col.items-start.justify-center {
+            transition: all 0.3s ease;
+        }
+
+        #menu {
+            transition: all 0.3s ease;
+            visibility: hidden;
+        }
+
+        #menu.menu-open {
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #menu a {
+            transition: all 0.2s ease;
+        }
+
+        #menu a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        /* Hamburger to X transition */
+        .hamburger-menu {
+            position: relative;
+            width: 32px;
+            height: 24px;
+            cursor: pointer;
+        }
+
+        .hamburger-menu span {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: white;
+            transition: all 0.3s ease;
+            left: 0;
+        }
+
+        .hamburger-menu span:nth-child(1) {
+            top: 0;
+        }
+
+        .hamburger-menu span:nth-child(2) {
+            top: 10px;
+        }
+
+        .hamburger-menu span:nth-child(3) {
+            top: 20px;
+        }
+
+        /* X animation */
+        .hamburger-menu.open span:nth-child(1) {
+            transform: rotate(45deg);
+            top: 10px;
+        }
+
+        .hamburger-menu.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-menu.open span:nth-child(3) {
+            transform: rotate(-45deg);
+            top: 10px;
+        }
+
+        .flip-card {
+            perspective: 1000px;
+            height: 256px;
+            width: 256px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 640px) {
+            .flip-card {
+                height: 200px;
+                width: 200px;
+                margin-bottom: 20px;
+            }
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        /* For touch devices */
+        @media (hover: none) {
+            .flip-card:active .flip-card-inner {
+                transform: rotateY(180deg);
+            }
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+        }
+
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #121212;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+
+<body class="bg-primary min-h-screen text-white m-0 p-0">
+    <!-- Navigation -->
+    <nav class="w-full px-4 sm:px-6 py-4">
+        <div class="container mx-auto px-2 sm:px-4 md:px-6 flex justify-between items-center">
+            <h1 class="font-argent text-2xl sm:text-3xl md:text-4xl font-bold">Quantcure</h1>
+            <div class="flex items-center">
+                <div id="menuBtn" class="hamburger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div id="menu"
+                class="fixed top-16 sm:top-20 right-4 sm:right-6 w-48 bg-primary rounded-lg shadow-xl transform opacity-0 transition-all duration-300 ease-in-out z-50">
+                <div class="py-2">
+                    <ul class="font-greycliff text-sm">
+                        <li><a href="index.html"
+                                class="text-white hover:text-gray-300 block py-2 px-4 transition-all duration-200">Home</a>
+                        </li>
+                        <li><a href="goal.html"
+                                class="text-white hover:text-gray-300 block py-2 px-4 transition-all duration-200">Goals</a>
+                        </li>
+                        <li><a href="mission.html"
+                                class="text-white hover:text-gray-300 block py-2 px-4 transition-all duration-200">Mission
+                                & Values</a></li>
+                        <li><a href="roadmap.html"
+                                class="text-white hover:text-gray-300 block py-2 px-4 transition-all duration-200">Roadmap</a>
+                        </li>
+                        <li><a href="products.html"
+                                class="text-white hover:text-gray-300 block py-2 px-4 transition-all duration-200">Products</a>
+                        </li>
+                        <li><a href="blogs.html"
+                                class="text-white hover:text-gray-300 block py-2 px-4 transition-all duration-200">Blogs</a>
+                        </li>
+                        <li><a href="story.html"
+                                class="text-white hover:text-gray-300 block py-2 px-4 transition-all duration-200">Our
+                                Story</a></li>
+                        <li><a href="team.html"
+                                class="text-white hover:text-gray-300 block py-2 px-4 transition-all duration-200">About
+                                Us</a>
+                        </li>
+                        <li><a href="contact.html"
+                                class="text-white hover:text-gray-300 block py-2 px-4 transition-all duration-200">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="py-8 sm:py-12 md:py-16">
+        <div class="container mx-auto px-4 sm:px-6">
+
+            <!-- Team Section -->
+            <section id="team" class="py-10 sm:py-16 md:py-20 bg-black">
+                <div class="container mx-auto px-4 sm:px-6">
+                    <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-20">
+                        <h7 class="font-argent text-3xl sm:text-4xl md:text-5xl text-white lg:w-1/3 text-center lg:text-left mb-8 lg:mb-0">Meet Our Experienced Team</h7>
+                        <div class="flex flex-col sm:flex-row flex-wrap gap-8 lg:w-2/3 justify-center sm:justify-start">
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div
+                                        class="flip-card-front bg-white rounded-full p-4 sm:p-6 flex flex-col justify-center items-center w-full h-full">
+                                        <h3 class="font-argent text-xl sm:text-2xl text-black mb-2">Vedagiriswaran N</h3>
+                                        <p class="font-greycliff font-bold text-gray-600 text-center">CEO</p>
+                                    </div>
+                                    <div
+                                        class="flip-card-back bg-white rounded-full p-3 sm:p-6 flex flex-col justify-center items-center w-full h-full">
+                                        <h3 class="font-argent text-lg sm:text-xl text-black mb-2 sm:mb-4">Work Experience</h3>
+                                        <ul class="text-xs sm:text-sm text-gray-600 text-center space-y-1 sm:space-y-2">
+                                            <li>Chemical engineer by virtue, with specialisation & hands on experience
+                                                on pharmaceuticals
+                                                operations and management. The man behind all the pharmaceutical
+                                                processes and workflows.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div
+                                        class="flip-card-front bg-white rounded-full p-4 sm:p-6 flex flex-col justify-center items-center w-full h-full">
+                                        <h3 class="font-argent text-xl sm:text-2xl text-black mb-2">Kumara Guru R</h3>
+                                        <p class="font-greycliff font-bold text-gray-600 text-center">CTO</p>
+                                    </div>
+                                    <div
+                                        class="flip-card-back bg-white rounded-full p-3 sm:p-6 flex flex-col justify-center items-center w-full h-full">
+                                        <h3 class="font-argent text-lg sm:text-xl text-black mb-2 sm:mb-4">Work Experience</h3>
+                                        <ul class="text-xs sm:text-sm text-gray-600 text-center space-y-1 sm:space-y-2">
+                                            <li>A chemical engineer with specialisation & experienced in
+                                                cheminformatics, AI/ML. The one who
+                                                takes care of anything and everything in the digital space.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black py-8 sm:py-12">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="border-t border-gray-800 pt-6 sm:pt-8 flex flex-col items-center text-center">
+                <p class="font-greycliff text-gray-400 mb-4 sm:mb-6">© 2025 Quantcure, All Rights Reserved.</p>
+                <div class="flex space-x-4 mb-4 sm:mb-6">
+                    <div class="bg-gray-800 rounded-full w-48 sm:w-60 h-8 sm:h-10 flex items-center justify-center">
+                        <span class="text-gray-300 text-sm sm:text-base">Quantcure</span>
+                    </div>
+                </div>
+                <p class="text-xs sm:text-sm text-gray-600 mb-3 sm:mb-4">Innovative Quantitative Solutions</p>
+                <div class="flex flex-wrap justify-center space-x-3 sm:space-x-6 text-xs text-gray-500">
+                    <span>Privacy Policy</span>
+                    <span>Terms of Service</span>
+                    <span>Contact Us</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Toggle menu functionality with hamburger to X animation
+        const menuBtn = document.getElementById('menuBtn');
+        const menu = document.getElementById('menu');
+
+        menuBtn.addEventListener('click', function () {
+            menu.classList.toggle('menu-open');
+            menuBtn.classList.toggle('open');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function (event) {
+            if (!menuBtn.contains(event.target) && !menu.contains(event.target)) {
+                menu.classList.remove('menu-open');
+                menuBtn.classList.remove('open');
+            }
+        });
+
+        // Add touch support for flip cards
+        document.querySelectorAll('.flip-card').forEach(card => {
+            card.addEventListener('touchstart', function() {
+                const inner = this.querySelector('.flip-card-inner');
+                inner.style.transform = inner.style.transform === 'rotateY(180deg)' ? '' : 'rotateY(180deg)';
+            });
+        });
+    </script>
+</body>
+
+</html>

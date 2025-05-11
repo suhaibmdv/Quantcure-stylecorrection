@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantcure - Contact</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Argent+CF:wght@400;700&family=GreyCliff+CF:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#000000',
+                        secondary: '#666666'
+                    },
+                    borderRadius: {
+                        'none': '0px',
+                        'sm': '4px',
+                        DEFAULT: '8px',
+                        'md': '12px',
+                        'lg': '16px',
+                        'xl': '20px',
+                        '2xl': '24px',
+                        '3xl': '32px',
+                        'full': '9999px',
+                        'button': '8px'
+                    },
+                    fontFamily: {
+                        'argent': ['Argent CF', 'serif'],
+                        'greycliff': ['GreyCliff CF', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Base styles for icons and menus */
+        :where([class^="ri-"])::before {
+            content: "\f3c2";
+        }
+
+        .menu-open {
+            transform: translateX(0) !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        .flex.flex-col.items-start.justify-center {
+            transition: all 0.3s ease;
+        }
+
+        #menu {
+            transition: all 0.3s ease;
+            visibility: hidden;
+        }
+
+        #menu.menu-open {
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #menu a {
+            transition: all 0.2s ease;
+        }
+
+        #menu a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        /* Hamburger to X transition */
+        .hamburger-menu {
+            position: relative;
+            width: 32px;
+            height: 24px;
+            cursor: pointer;
+        }
+
+        .hamburger-menu span {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: white;
+            transition: all 0.3s ease;
+            left: 0;
+        }
+
+        .hamburger-menu span:nth-child(1) {
+            top: 0;
+        }
+
+        .hamburger-menu span:nth-child(2) {
+            top: 10px;
+        }
+
+        .hamburger-menu span:nth-child(3) {
+            top: 20px;
+        }
+
+        /* X animation */
+        .hamburger-menu.open span:nth-child(1) {
+            transform: rotate(45deg);
+            top: 10px;
+        }
+
+        .hamburger-menu.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-menu.open span:nth-child(3) {
+            transform: rotate(-45deg);
+            top: 10px;
+        }
+
+        .form-input-custom {
+            width: 100%;
+        }
+
+        /* Added success and error message styles */
+        .success-message,
+        .error-message {
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            height: 0;
+        }
+
+        .success-message.show,
+        .error-message.show {
+            opacity: 1;
+            visibility: visible;
+            height: auto;
+            margin-top: 1rem;
+        }
+
+        /* Form element focus styles */
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #4B5563;
+            box-shadow: 0 0 0 3px rgba(156, 163, 175, 0.3);
+        }
+
+        /* Button hover animation */
+        .submit-btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .submit-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 0.5s;
+        }
+
+        .submit-btn:hover::after {
+            transform: translate(-50%, -50%) scale(2);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #121212;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+
+<body class="bg-primary min-h-screen text-white m-0 p-0">
+    <!-- Navigation -->
+    <nav class="w-full px-6 py-4">
+        <div class="container mx-auto px-4 md:px-6 flex justify-between items-center">
+            <h1 class="font-argent text-3xl md:text-4xl font-bold">Quantcure</h1>
+            <div class="flex items-center">
+                <div id="menuBtn" class="hamburger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div id="menu"
+                class="fixed top-20 right-6 w-48 bg-primary rounded-lg shadow-xl transform opacity-0 transition-all duration-300 ease-in-out z-50">
+                <div class="py-2">
+                    <ul class="font-greycliff text-sm">
+                        <li><a href="index.html"
+                                class="text-white hover:text-gray-300 block py-2 px-4 transition-all duration-200">Home</a>
+                        </li>
+                        <li><a href="goal.html"
+                                class="text-white hover:text-gray-300 block py-2 px-4 transition-all duration-200">Goals</a>
+                        </li>
+                        <li><a href="mission.html"
+                                class="text-white hover:text-gray-300 block py-2 px-4 transition-all duration-200">Mission
+                                & Values</a></li>
+                        <li><a href="roadmap.html"
+                                class="text-white hover:text-gray-300 block py-2 px-4 transition-all duration-200">Roadmap</a>
+                        </li>
+                        <li><a href="products.html"
+                                class="text-white hover:text-gray-300 block py-2 px-4 transition-all duration-200">Products</a>
+                        </li>
+                        <li><a href="blogs.html"
+                                class="text-white hover:text-gray-300 block py-2 px-4 transition-all duration-200">Blogs</a>
+                        </li>
+                        <li><a href="story.html"
+                                class="text-white hover:text-gray-300 block py-2 px-4 transition-all duration-200">Our
+                                Story</a></li>
+                        <li><a href="team.html"
+                                class="text-white hover:text-gray-300 block py-2 px-4 transition-all duration-200">About
+                                Us</a>
+                        </li>
+                        <li><a href="contact.html"
+                                class="text-white hover:text-gray-300 block py-2 px-4 transition-all duration-200">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Main Content -->
+    <main class="pt-32 pb-20">
+        <div class="container mx-auto px-6">
+            <h1 class="text-5xl font-bold mb-4 text-center font-argent">Connect With Us</h1>
+            <p class="text-center text-gray-400 font-greycliff mb-16 max-w-2xl mx-auto">
+                Have questions or want to explore collaboration opportunities? We'd love to hear from you. Fill out the
+                form below and our team will get back to you shortly.
+            </p>
+
+            <!-- Contact Form Section -->
+            <div class="container mx-auto px-6 mb-24">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                    <form id="contactForm" class="bg-black py-8 px-10 rounded-lg md:col-span-2 shadow-xl" method="POST">
+                        <div class="success-message bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded"
+                            id="successMessage">
+                            Your message has been sent successfully! We'll get back to you soon.
+                        </div>
+                        <div class="error-message bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded"
+                            id="errorMessage">
+                            There was an error sending your message. Please try again.
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <label class="block text-white font-bold mb-2" for="name">Name:</label>
+                                <input
+                                    class="shadow appearance-none border border-gray-700 rounded-md w-full py-3 px-4 text-white bg-gray-800 focus:outline-none focus:shadow-outline transition-all duration-200"
+                                    id="name" name="name" type="text" placeholder="Your Name" required>
+                            </div>
+                            <div>
+                                <label class="block text-white font-bold mb-2" for="email">Email:</label>
+                                <input
+                                    class="shadow appearance-none border border-gray-700 rounded-md w-full py-3 px-4 text-white bg-gray-800 focus:outline-none focus:shadow-outline transition-all duration-200"
+                                    id="email" name="email" type="email" placeholder="Your Email" required>
+                            </div>
+                            <div>
+                                <label class="block text-white font-bold mb-2" for="contact">Contact Number:</label>
+                                <input
+                                    class="shadow appearance-none border border-gray-700 rounded-md w-full py-3 px-4 text-white bg-gray-800 focus:outline-none focus:shadow-outline transition-all duration-200"
+                                    id="contact" name="contact" type="tel" placeholder="Your Contact Number">
+                            </div>
+                            <div class="relative">
+                                <label class="block text-white font-bold mb-2" for="subject">Subject:</label>
+                                <div class="relative">
+                                    <select
+                                        class="shadow appearance-none border border-gray-700 rounded-md w-full py-3 px-4 text-white bg-gray-800 focus:outline-none focus:shadow-outline transition-all duration-200"
+                                        id="subject" name="subject" required>
+                                        <option value="">Select a subject</option>
+                                        <option value="career">Career</option>
+                                        <option value="collaboration">Collaboration</option>
+                                        <option value="enquiry">General Inquiry</option>
+                                        <option value="others">Others</option>
+                                    </select>
+                                    <i class="ri-arrow-down-s-line absolute right-3 top-3 text-white"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-8">
+                            <label class="block text-white font-bold mb-2" for="message">Message:</label>
+                            <textarea
+                                class="shadow appearance-none border border-gray-700 rounded-md w-full py-3 px-4 text-white bg-gray-800 focus:outline-none focus:shadow-outline transition-all duration-200 min-h-36"
+                                id="message" name="message" placeholder="Write your message here..."
+                                required></textarea>
+                        </div>
+                        <div class="flex justify-center mt-8">
+                            <button
+                                class="submit-btn bg-white text-black font-bold py-3 px-8 rounded-md focus:outline-none focus:shadow-outline transition-all duration-300 hover:bg-gray-200"
+                                type="submit">
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="bg-black p-8 rounded-lg shadow-xl">
+                        <h3 class="font-argent text-2xl text-white mb-6">Get In Touch</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <div class="bg-gray-800 p-3 rounded-full">
+                                    <i class="ri-map-pin-line text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-greycliff font-bold mb-1">Our Location</h4>
+                                    <p class="font-greycliff text-gray-400">
+                                        694, TNHB colony(Ph3), Ambattur Chennai
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="bg-gray-800 p-3 rounded-full">
+                                    <i class="ri-phone-line text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-greycliff font-bold mb-1">Phone Number</h4>
+                                    <p class="font-greycliff text-gray-400">
+                                        <a href="tel:+918122981799" class="hover:text-white transition-colors">+91
+                                            8122981799</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="bg-gray-800 p-3 rounded-full">
+                                    <i class="ri-mail-line text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-greycliff font-bold mb-1">Email Address</h4>
+                                    <p class="font-greycliff text-gray-400">
+                                        <a href="mailto:support@quantcure.com"
+                                            class="hover:text-white transition-colors">support@quantcure.com</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="bg-gray-800 p-3 rounded-full">
+                                    <i class="ri-linkedin-line text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-greycliff font-bold mb-1">LinkedIn</h4>
+                                    <p class="font-greycliff text-gray-400">
+                                        <a href="https://www.linkedin.com/company/quantcure" target="_blank"
+                                            class="hover:text-white transition-colors">Connect with us</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Social Media Links -->
+                        <div class="mt-10">
+                            <h4 class="font-greycliff font-bold mb-4">Follow Us</h4>
+                            <div class="flex gap-4">
+                                <a href="#" class="bg-gray-800 p-3 rounded-full hover:bg-gray-700 transition-colors">
+                                    <i class="ri-twitter-fill text-xl"></i>
+                                </a>
+                                <a href="#" class="bg-gray-800 p-3 rounded-full hover:bg-gray-700 transition-colors">
+                                    <i class="ri-facebook-fill text-xl"></i>
+                                </a>
+                                <a href="#" class="bg-gray-800 p-3 rounded-full hover:bg-gray-700 transition-colors">
+                                    <i class="ri-instagram-line text-xl"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/company/quantcure" target="_blank"
+                                    class="bg-gray-800 p-3 rounded-full hover:bg-gray-700 transition-colors">
+                                    <i class="ri-linkedin-fill text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Newsletter Section -->
+            <section class="bg-black py-20 rounded-lg shadow-xl mt-12">
+                <div class="container mx-auto px-6">
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+                        <div class="w-full md:w-1/2">
+                            <img src="https://static.readdy.ai/image/99e5182bf3e81abfdbbf953c275cea1a/ec852433aed40499c3761714fba8bd84.png"
+                                alt="Newsletter" class="w-full h-auto rounded-lg">
+                        </div>
+                        <div class="w-full md:w-1/2 pl-0 md:pl-12">
+                            <h2 class="font-argent text-4xl md:text-5xl text-white mb-4">Stay Updated</h2>
+                            <p class="text-gray-400 mb-8">Subscribe to our newsletter for the latest updates, industry
+                                insights, and exclusive content.</p>
+                            <form id="newsletterForm" class="relative">
+                                <input type="email" placeholder="Enter Your Email" required
+                                    class="w-full px-6 py-4 rounded-full text-black border border-transparent focus:border-gray-300 transition-all duration-200">
+                                <button type="submit"
+                                    class="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full hover:bg-gray-800 transition-all duration-200">
+                                    <i class="ri-send-plane-fill"></i>
+                                </button>
+                            </form>
+                            <p class="text-xs text-gray-500 mt-4">By subscribing, you agree to our Privacy Policy and
+                                consent to receive updates from our company.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <!-- Footer -->
+    <footer class="bg-black py-12">
+        <div class="container mx-auto px-6">
+            <div class="border-t border-gray-800 pt-8 flex flex-col items-center text-center">
+                <p class="font-greycliff text-gray-400 mb-6">© 2025 Quantcure, All Rights Reserved.</p>
+                <div class="flex space-x-4 mb-6">
+                    <div class="bg-gray-800 rounded-full w-60 h-10 flex items-center justify-center">
+                        <span class="text-gray-300">Quantcure</span>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 mb-4">Innovative Quantitative Solutions</p>
+                <div class="flex flex-wrap justify-center space-x-6 text-xs text-gray-500">
+                    <span>Privacy Policy</span>
+                    <span>Terms of Service</span>
+                    <span>Contact Us</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- <footer class="bg-black py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-10">
+                <div>
+                    <h3 class="font-argent text-2xl mb-6">Quantcure</h3>
+                    <p class="text-gray-400 mb-6">Revolutionizing healthcare through advanced quantitative solutions and data-driven insights.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="products.html" class="text-gray-400 hover:text-white transition-colors">Products</a></li>
+                        <li><a href="blogs.html" class="text-gray-400 hover:text-white transition-colors">Blogs</a></li>
+                        <li><a href="team.html" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6">Resources</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">FAQs</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Support</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6">Contact Us</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-2">
+                            <i class="ri-map-pin-line"></i>
+                            <span class="text-gray-400">694, TNHB colony(Ph3), Ambattur Chennai</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="ri-phone-line"></i>
+                            <a href="tel:+918122981799" class="text-gray-400 hover:text-white transition-colors">+91 8122981799</a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="ri-mail-line"></i>
+                            <a href="mailto:support@quantcure.com" class="text-gray-400 hover:text-white transition-colors">support@quantcure.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="font-greycliff text-gray-400 mb-4 md:mb-0">© 2025 Quantcure, All Rights Reserved.</p>
+                <div class="flex gap-8">
+                    <a href="index.html" class="font-greycliff text-gray-400 hover:text-white transition-colors">Home</a>
+                    <a href="#" class="font-greycliff text-gray-400 hover:text-white transition-colors">Cookies</a>
+                    <a href="#" class="font-greycliff text-gray-400 hover:text-white transition-colors">Help</a>
+                    <a href="#" class="font-greycliff text-gray-400 hover:text-white transition-colors">FAQs</a>
+                </div>
+            </div>
+        </div>
+    </footer> -->
+
+    <!-- JavaScript -->
+    <script>
+        // Toggle menu functionality with hamburger to X animation
+        const menuBtn = document.getElementById('menuBtn');
+        const menu = document.getElementById('menu');
+
+        menuBtn.addEventListener('click', function () {
+            menu.classList.toggle('menu-open');
+            menuBtn.classList.toggle('open');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function (event) {
+            if (!menuBtn.contains(event.target) && !menu.contains(event.target)) {
+                menu.classList.remove('menu-open');
+                menuBtn.classList.remove('open');
+            }
+        });
+
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const contact = document.getElementById('contact').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            // Prepare email data
+            const formData = {
+                name: name,
+                email: email,
+                contact: contact,
+                subject: subject,
+                message: message
+            };
+
+
+            // Alternative approach using FormSubmit service which forwards to your email
+            const formAction = `https://formsubmit.co/suhaibmdv@gmail.com`;
+            const formElement = document.getElementById('contactForm');
+
+            // Add necessary FormSubmit attributes
+            formElement.setAttribute('action', formAction);
+            formElement.setAttribute('method', 'POST');
+
+            // Add hidden fields for FormSubmit configuration
+            const hiddenFields = [
+                { name: '_subject', value: `New Contact Form Submission: ${subject}` },
+                { name: '_captcha', value: 'false' },
+                { name: '_template', value: 'table' },
+                { name: '_next', value: window.location.href }
+            ];
+
+            hiddenFields.forEach(field => {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = field.name;
+                input.value = field.value;
+                formElement.appendChild(input);
+            });
+
+            // Submit the form
+            formElement.submit();
+        });
+
+        // Newsletter form submission
+        document.getElementById('newsletterForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+
+            // You can implement newsletter subscription here
+            alert(`Thank you for subscribing with ${email}! You'll receive our updates soon.`);
+            this.reset();
+        });
+    </script>
+
+</body>
+
+</html>

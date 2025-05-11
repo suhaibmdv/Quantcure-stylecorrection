@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantcure - Mission</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Argent+CF:wght@400;700&family=GreyCliff+CF:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#000000',
+                        secondary: '#666666'
+                    },
+                    borderRadius: {
+                        'none': '0px',
+                        'sm': '4px',
+                        DEFAULT: '8px',
+                        'md': '12px',
+                        'lg': '16px',
+                        'xl': '20px',
+                        '2xl': '24px',
+                        '3xl': '32px',
+                        'full': '9999px',
+                        'button': '8px'
+                    },
+                    fontFamily: {
+                        'argent': ['Argent CF', 'serif'],
+                        'greycliff': ['GreyCliff CF', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Base styles for icons and menus */
+        :where([class^="ri-"])::before {
+            content: "\f3c2";
+        }
+
+        .menu-open {
+            transform: translateX(0) !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        .flex.flex-col.items-start.justify-center {
+            transition: all 0.3s ease;
+        }
+
+        #menu {
+            transition: all 0.3s ease;
+            visibility: hidden;
+        }
+
+        #menu.menu-open {
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #menu a {
+            transition: all 0.2s ease;
+        }
+
+        #menu a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        /* Hamburger to X transition */
+        .hamburger-menu {
+            position: relative;
+            width: 32px;
+            height: 24px;
+            cursor: pointer;
+        }
+
+        .hamburger-menu span {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: white;
+            transition: all 0.3s ease;
+            left: 0;
+        }
+
+        .hamburger-menu span:nth-child(1) {
+            top: 0;
+        }
+
+        .hamburger-menu span:nth-child(2) {
+            top: 10px;
+        }
+
+        .hamburger-menu span:nth-child(3) {
+            top: 20px;
+        }
+
+        /* X animation */
+        .hamburger-menu.open span:nth-child(1) {
+            transform: rotate(45deg);
+            top: 10px;
+        }
+
+        .hamburger-menu.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-menu.open span:nth-child(3) {
+            transform: rotate(-45deg);
+            top: 10px;
+        }
+
+        @font-face {
+            font-family: 'Argent CF';
+            src: local('Argent CF');
+        }
+
+        .number-font {
+            font-family: 'Argent CF', serif;
+        }
+
+        cards.flex {
+            display: flex;
+            justify-content: center;
+            /* Centers cards horizontally */
+            align-items: center;
+            /* Centers cards vertically if necessary */
+            gap: 10px;
+            /* Adds spacing between cards */
+        }
+    </style>
+</head>
+
+<body class="bg-primary min-h-screen text-white m-0 p-0">
+    <!-- Navigation -->
+    <nav class="w-full px-6 py-4">
+        <div class="container mx-auto px-4 md:px-6 flex justify-between items-center">
+            <h1 class="font-argent text-3xl md:text-4xl font-bold">Quantcure</h1>
+            <div class="flex items-center">
+                <div id="menuBtn" class="hamburger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div id="menu"
+                class="fixed top-20 right-6 w-48 bg-primary rounded-lg shadow-xl transform opacity-0 transition-all duration-300 ease-in-out z-50">
+                <div class="py-2">
+                    <ul class="font-greycliff text-sm">
+                        <li><a href="index.html"
+                                class="text-white hover:text-gray-300 block py-2 px-4 transition-all duration-200">Home</a>
+                        </li>
+                        <li><a href="goal.html"
+                                class="text-white hover:text-gray-300 block py-2 px-4 transition-all duration-200">Goals</a>
+                        </li>
+                        <li><a href="mission.html"
+                                class="text-white hover:text-gray-300 block py-2 px-4 transition-all duration-200">Mission
+                                & Values</a></li>
+                        <li><a href="roadmap.html"
+                                class="text-white hover:text-gray-300 block py-2 px-4 transition-all duration-200">Roadmap</a>
+                        </li>
+                        <li><a href="products.html"
+                                class="text-white hover:text-gray-300 block py-2 px-4 transition-all duration-200">Products</a>
+                        </li>
+                        <li><a href="blogs.html"
+                                class="text-white hover:text-gray-300 block py-2 px-4 transition-all duration-200">Blogs</a>
+                        </li>
+                        <li><a href="story.html"
+                                class="text-white hover:text-gray-300 block py-2 px-4 transition-all duration-200">Our
+                                Story</a></li>
+                        <li><a href="team.html"
+                                class="text-white hover:text-gray-300 block py-2 px-4 transition-all duration-200">About
+                                Us</a>
+                        </li>
+                        <li><a href="contact.html"
+                                class="text-white hover:text-gray-300 block py-2 px-4 transition-all duration-200">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="py-16">
+        <div class="container mx-auto px-6">
+            <h1 class="text-4xl font-bold mb-16 text-center font-argent">Mission, Vision & Values</h1>
+
+            <!-- Mission & Values Section -->
+            <div class="mt-16 max-w-4xl mx-auto">
+                <div class="flex justify-between text-center text-white mb-12">
+                    <div class="w-1/2 mr-4">
+                        <h2 class="text-3xl font-bold mb-4 font-['Argent_CF']">Mission</h2>
+                        <p class="text-lg leading-relaxed">
+                            In this era of information and heightened computing capability, we are actively building key
+                            scientific
+                            methods which utilize the transformative power of advanced computational models to
+                            accelerate the drug
+                            discovery pipeline. We are actively striving to bridge the gap between deep tech and
+                            pharmaceutical
+                            sciences for quicker, better, and safer drugs to market.
+                        </p>
+                    </div>
+                    <div class="w-1/2 ml-4">
+                        <h2 class="text-3xl font-bold mb-4 font-['Argent_CF']">Core Values</h2>
+                        <ul class="list-disc pl-8 space-y-4 text-lg">
+                            <li>Patient Centricity - Build every part responsibly with only focus on patients</li>
+                            <li>Integrity - Upholding ethical standards and transparency</li>
+                            <li>Innovation - Being unapologetically creative</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="flex gap-8">
+                    <div class="flex-1 text-white">
+                        <h2 class="text-3xl font-bold mb-6 text-center font-['Argent_CF']">Vision</h2>
+                        <p class="text-lg">
+                            To identify or discover a drug for every disease
+                        </p>
+                    </div>
+                    <div class="flex-1">
+                        <img src="https://static.readdy.ai/image/5bc27dc9c82ef147db4effa390bd36f6/9dfbfeb9de81508fd856ccf87feb592a.png"
+                            alt="Core Values Diagram"
+                            style="width: 100%; height: auto; object-fit: contain; position: relative; top: -50px;" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12">
+        <div class="container mx-auto px-6">
+            <div class="border-t border-gray-800 pt-8 flex flex-col items-center text-center">
+                <p class="font-greycliff text-gray-400 mb-6">© 2025 Quantcure, All Rights Reserved.</p>
+                <div class="flex space-x-4 mb-6">
+                    <div class="bg-gray-800 rounded-full w-60 h-10 flex items-center justify-center">
+                        <span class="text-gray-300">Quantcure</span>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 mb-4">Innovative Quantitative Solutions</p>
+                <div class="flex flex-wrap justify-center space-x-6 text-xs text-gray-500">
+                    <span>Privacy Policy</span>
+                    <span>Terms of Service</span>
+                    <span>Contact Us</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Toggle menu functionality with hamburger to X animation
+        const menuBtn = document.getElementById('menuBtn');
+        const menu = document.getElementById('menu');
+
+        menuBtn.addEventListener('click', function () {
+            menu.classList.toggle('menu-open');
+            menuBtn.classList.toggle('open');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function (event) {
+            if (!menuBtn.contains(event.target) && !menu.contains(event.target)) {
+                menu.classList.remove('menu-open');
+                menuBtn.classList.remove('open');
+            }
+        });
+    </script>
+</body>
+
+</html>
